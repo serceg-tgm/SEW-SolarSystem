@@ -1,10 +1,19 @@
+from panda3d.core import AmbientLight
+from panda3d.core import Point3,Vec3,Vec4
+
 class EventHandler(object):
     def __init__(self, runtime):
         self.runtime = runtime
+        self.pointlightOn = True
         self.textureOn = True
 
     def toggleLight(self):
-        pass
+        alight = AmbientLight('alight')
+        alight.setColor(Vec4(0.2, 0.2, 0.2, 1))
+        alnp = render.attachNewNode(alight)
+        self.sun = self.runtime.getPlanet('sun')
+        self.sun.reparentTo(render)
+        self.sun.setLight(alnp)
 
     def toggleTexture(self):
         planets = self.runtime.getAllPlanets()
