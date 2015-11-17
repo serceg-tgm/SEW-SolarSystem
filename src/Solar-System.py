@@ -81,18 +81,24 @@ class World(DirectObject):
         self.lEventText = self.genLabelText(
             "L: Toggle the Point-Light Source", 3)
 
+        self.nEventText = self.genLabelText(
+            "N: Make the simulation faster", 4)
+
+        self.mEventText = self.genLabelText(
+            "M: Make the sumulation slower", 5)
+
         self.lEventText = self.genLabelText(
-            "W|Arrow-up: Go forward", 4)
+            "W|Arrow-up: Go forward", 6)
         self.lEventText = self.genLabelText(
-            "S|Arrow-down: Go backward", 5)
+            "S|Arrow-down: Go backward", 7)
         self.lEventText = self.genLabelText(
-            "A|Arrow-left: Go left", 6)
+            "A|Arrow-left: Go left", 8)
         self.lEventText = self.genLabelText(
-            "D|Arrow-right: Go right", 7)
+            "D|Arrow-right: Go right", 9)
         self.lEventText = self.genLabelText(
-            "U: Go upward", 8)
+            "U: Go upward", 10)
         self.lEventText = self.genLabelText(
-            "J: Go downward", 9)
+            "J: Go downward", 11)
 
         self.simRunning = True  # boolean to keep track of the
         # state of the global simulation
@@ -113,6 +119,8 @@ class World(DirectObject):
         self.accept("space", self.handleMouseClick)
         self.accept("t", self.eventHandler.toggleTexture)
         self.accept("l", self.eventHandler.toggleLight)
+        self.accept("n", self.eventHandler.fasterSimulation)
+        self.accept("m", self.eventHandler.slowerSimulation)
 
         self.accept("w", self.camera.setMouseBtn, [0, 1])
         self.accept("arrow_up", self.camera.setMouseBtn, [0, 1])

@@ -32,7 +32,7 @@ class EventHandler(object):
         pass
 
     def fasterSimulation(self):
-        pass
+        self.runtime.fasterPlaying()
 
     def slowerSimulation(self):
-        pass
+        self.runtime.slowerPlaying()

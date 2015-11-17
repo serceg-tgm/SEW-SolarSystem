@@ -50,6 +50,19 @@ class RuntimeHandler(object):
             else:
                 self.selfRotateList[selfRotate].resume()
 
+    def editSpeedPlaying(self, speed):
+        for orbit in self.orbitList:
+            self.orbitList[orbit].setPlayRate(self.orbitList[orbit].getPlayRate() + speed)
+
+        for selfRotate in self.selfRotateList:
+            self.selfRotateList[selfRotate].setPlayRate(self.selfRotateList[selfRotate].getPlayRate() + speed)
+
+    def fasterPlaying(self):
+        self.editSpeedPlaying(1)
+
+    def slowerPlaying(self):
+        self.editSpeedPlaying(-1)
+
     def getAllPlanets(self):
         return self.planetList
 
