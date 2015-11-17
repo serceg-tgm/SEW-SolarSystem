@@ -9,7 +9,7 @@ class Camera(object):
         self.mousex = 0
         self.mousey = 0
         self.last = 0
-        self.mousebtn = [0,0,0]
+        self.mousebtn = [0,0,0,0]
 
     def controlCamera(self, task):
         # figure out how much the mouse has moved (in pixels)
@@ -27,8 +27,12 @@ class Camera(object):
         if (self.last == 0): elapsed = 0
         if (self.mousebtn[0]):
             self.focus = self.focus + dir * elapsed*30
-        if (self.mousebtn[1]) or (self.mousebtn[2]):
+        if self.mousebtn[1]:
             self.focus = self.focus - dir * elapsed*30
+        if self.mousebtn[2]:
+            self.focus = self.focus + dir * elapsed*30
+        if self.mousebtn[3]:
+            self.focus = self.focus + dir * elapsed*30
         base.camera.setPos(self.focus - (dir*5))
         self.focus = base.camera.getPos() + (dir*5)
         self.last = task.time

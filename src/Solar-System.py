@@ -94,12 +94,26 @@ class World(DirectObject):
         self.accept("space", self.handleMouseClick)
         self.accept("t", self.eventHandler.toggleTexture)
 
-        self.accept("mouse1", self.camera.setMouseBtn, [0, 1])
-        self.accept("mouse1-up", self.camera.setMouseBtn, [0, 0])
-        self.accept("mouse2", self.camera.setMouseBtn, [1, 1])
-        self.accept("mouse2-up", self.camera.setMouseBtn, [1, 0])
-        self.accept("mouse3", self.camera.setMouseBtn, [2, 1])
-        self.accept("mouse3-up", self.camera.setMouseBtn, [2, 0])
+        self.accept("w", self.camera.setMouseBtn, [0, 1])
+        self.accept("arrow_up", self.camera.setMouseBtn, [0, 1])
+        self.accept("w-up", self.camera.setMouseBtn, [0, 0])
+        self.accept("arrow_up-up", self.camera.setMouseBtn, [0, 0])
+
+        self.accept("s", self.camera.setMouseBtn, [1, 1])
+        self.accept("arrow_down", self.camera.setMouseBtn, [1, 1])
+        self.accept("s-up", self.camera.setMouseBtn, [1, 0])
+        self.accept("arrow_down-up", self.camera.setMouseBtn, [1, 0])
+
+        self.accept("a", self.camera.setMouseBtn, [2, 1])
+        self.accept("arrow_left", self.camera.setMouseBtn, [2, 1])
+        self.accept("a-up", self.camera.setMouseBtn, [2, 0])
+        self.accept("arrow_left-up", self.camera.setMouseBtn, [2, 0])
+
+        self.accept("d", self.camera.setMouseBtn, [3, 1])
+        self.accept("arrow_right", self.camera.setMouseBtn, [3, 1])
+        self.accept("d-up", self.camera.setMouseBtn, [3, 0])
+        self.accept("arrow_right-up", self.camera.setMouseBtn, [3, 0])
+
 
     # end __init__
 
@@ -132,7 +146,8 @@ class World(DirectObject):
         venus = Planet("venus", "models/venus_1k_tex.jpg", "models/planet_sphere", 0.72 * self.orbitscale, 0.923 * self.sizescale, None, 243 * self.dayscale, 0.615 * self.yearscale, True)
         mars = Planet("mars", "models/mars_1k_tex.jpg", "models/planet_sphere", 1.52 * self.orbitscale, 0.515 * self.sizescale, None, 1.03 * self.dayscale, 1.881 * self.yearscale, True)
         moon = Planet("moon", "models/moon_1k_tex.jpg", "models/planet_sphere", 0.1 * self.orbitscale, 0.1 * self.sizescale, None, .0749 * self.yearscale, .0749 * self.yearscale, True)
-        earth = Planet("earth", "models/earth_1k_tex.jpg", "models/planet_sphere", self.orbitscale, self.sizescale, [moon], self.dayscale, self.yearscale, True)
+        moon2 = Planet("moon2", "models/moon_1k_tex.jpg", "models/planet_sphere", 0.2 * self.orbitscale, 0.1 * self.sizescale, None, .0749 * self.yearscale, .0749 * self.yearscale, True)
+        earth = Planet("earth", "models/earth_1k_tex.jpg", "models/planet_sphere", self.orbitscale, self.sizescale, [moon,moon2], self.dayscale, self.yearscale, True)
         sun = Planet("sun", "models/sun_1k_tex.jpg", "models/planet_sphere", 0, 2 * self.sizescale, None, 20, None, True)
 
         self.runtime.addPlanet(render, mercury)
