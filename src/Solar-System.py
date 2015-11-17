@@ -69,11 +69,17 @@ class World(DirectObject):
                                   style=1, fg=(1, 1, 1, 1),
                                   pos=(0.9, -0.95), scale=.07)
 
+        self.escEventText = self.genLabelText(
+            "ESC: Quit program", 0)
+
         self.spaceEventText = self.genLabelText(
-            "Space: Toggle entire Solar System [RUNNING]", 0)
+            "Space: Toggle entire Solar System [RUNNING]", 1)
 
         self.tEventText = self.genLabelText(
-            "T: Toggle the Texture", 1)
+            "T: Toggle the Texture", 2)
+
+        self.lEventText = self.genLabelText(
+            "L: Toggle the Point-Light Source", 3)
 
         self.simRunning = True  # boolean to keep track of the
         # state of the global simulation
@@ -89,10 +95,11 @@ class World(DirectObject):
         # completes to tell the counter to update
 
 
-        taskMgr.add(self.camera.controlCamera, "camera-task")
+        #taskMgr.add(self.camera.controlCamera, "camera-task")
         self.accept("escape", sys.exit)  # Exit the program when escape is pressed
         self.accept("space", self.handleMouseClick)
         self.accept("t", self.eventHandler.toggleTexture)
+        self.accept("l", self.eventHandler.toggleLight)
 
         self.accept("mouse1", self.camera.setMouseBtn, [0, 1])
         self.accept("mouse1-up", self.camera.setMouseBtn, [0, 0])
@@ -109,10 +116,10 @@ class World(DirectObject):
         if self.simRunning:
             # changing the text to reflect the change from "RUNNING" to "PAUSED"
             self.spaceEventText.setText(
-                "Mouse Button 1: Toggle entire Solar System [PAUSED]")
+                "Space: Toggle entire Solar System [PAUSED]")
         else:
             self.spaceEventText.setText(
-                "Mouse Button 1: Toggle entire Solar System [RUNNING]")
+                "Space: Toggle entire Solar System [RUNNING]")
 
         self.runtime.togglePlaying()
         # toggle self.simRunning
