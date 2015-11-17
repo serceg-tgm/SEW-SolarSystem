@@ -52,3 +52,6 @@ class RuntimeHandler(object):
 
     def getAllPlanets(self):
         return self.planetList
+
+    def getPlanet(self, name):
+        return self.planetList[name]
