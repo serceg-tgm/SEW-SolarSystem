@@ -1,13 +1,14 @@
 __author__ = 'mkritzl'
 
 class Planet(object):
-    def __init__(self, name, texturePath, modelPath, initPosition, scale, children, selfRotate, orbitRotate):
+    def __init__(self, name, texturePath, modelPath, initPosition, scale, children, selfRotate, orbitRotate, textureToggle):
         self.orbitRotate = orbitRotate
         self.selfRotate = selfRotate
         self.children = children
         self.name = name
         self.initPosition = initPosition
         self.texturePath = texturePath
+        self.textureToggle = textureToggle
 
         self.model = loader.loadModel(modelPath)
         self.model.setTexture(loader.loadTexture(texturePath), 1)

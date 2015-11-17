@@ -1,21 +1,23 @@
 class EventHandler(object):
     def __init__(self, runtime):
         self.runtime = runtime
-        self.texture = True
+        self.textureOn = True
 
     def toggleLight(self):
         pass
 
     def toggleTexture(self):
         planets = self.runtime.getAllPlanets()
-        if (self.texture == True):
+        if self.textureOn == True:
             for planet in planets:
-                planets[planet].disableTexture()
-            self.texture = False
+                if planets[planet].textureToggle==True:
+                    planets[planet].disableTexture()
+            self.textureOn = False
         else:
             for planet in planets:
-                planets[planet].enableTexture()
-            self.texture = True
+                if planets[planet].textureToggle==True:
+                    planets[planet].enableTexture()
+            self.textureOn = True
 
     def toggleSimulation(self):
         pass

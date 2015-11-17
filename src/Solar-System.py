@@ -126,28 +126,22 @@ class World(DirectObject):
     #########################################################################
 
     def loadPlanets(self):
+        sky = Planet("sky", "models/stars_1k_tex.jpg", "models/solar_sky_sphere", None, 40, None, None, None, False)
 
-        self.sky = loader.loadModel("models/solar_sky_sphere")
-
-        self.sky_tex = loader.loadTexture("models/stars_1k_tex.jpg")
-        self.sky.setTexture(self.sky_tex, 1)
-        self.sky.reparentTo(render)
-        self.sky.setScale(40)
-
-        sky = Planet("sky", "models/stars_1k_tex.jpg", "models/solar_sky_sphere", None, 40, None, None, None)
-
-        mercury = Planet("mercury", "models/mercury_1k_tex.jpg", "models/planet_sphere", 0.38 * self.orbitscale, 0.385 * self.sizescale, None, 59 * self.dayscale, 0.241 * self.yearscale)
-        venus = Planet("venus", "models/venus_1k_tex.jpg", "models/planet_sphere", 0.72 * self.orbitscale, 0.923 * self.sizescale, None, 243 * self.dayscale, 0.615 * self.yearscale)
-        mars = Planet("mars", "models/mars_1k_tex.jpg", "models/planet_sphere", 1.52 * self.orbitscale, 0.515 * self.sizescale, None, 1.03 * self.dayscale, 1.881 * self.yearscale)
-        moon = Planet("moon", "models/moon_1k_tex.jpg", "models/planet_sphere", 0.1 * self.orbitscale, 0.1 * self.sizescale, None, .0749 * self.yearscale, .0749 * self.yearscale)
-        earth = Planet("earth", "models/earth_1k_tex.jpg", "models/planet_sphere", self.orbitscale, self.sizescale, [moon], self.dayscale, self.yearscale)
-        sun = Planet("sun", "models/sun_1k_tex.jpg", "models/planet_sphere", 0, 2 * self.sizescale, None, 20, None)
+        mercury = Planet("mercury", "models/mercury_1k_tex.jpg", "models/planet_sphere", 0.38 * self.orbitscale, 0.385 * self.sizescale, None, 59 * self.dayscale, 0.241 * self.yearscale, True)
+        venus = Planet("venus", "models/venus_1k_tex.jpg", "models/planet_sphere", 0.72 * self.orbitscale, 0.923 * self.sizescale, None, 243 * self.dayscale, 0.615 * self.yearscale, True)
+        mars = Planet("mars", "models/mars_1k_tex.jpg", "models/planet_sphere", 1.52 * self.orbitscale, 0.515 * self.sizescale, None, 1.03 * self.dayscale, 1.881 * self.yearscale, True)
+        moon2 = Planet("moon2", "models/moon_1k_tex.jpg", "models/planet_sphere", 0.025 * self.orbitscale, 0.1 * self.sizescale, None, .0749 * self.yearscale, .09 * self.yearscale, True)
+        moon = Planet("moon", "models/moon_1k_tex.jpg", "models/planet_sphere", 0.1 * self.orbitscale, 0.1 * self.sizescale, [moon2], .0749 * self.yearscale, .0749 * self.yearscale, True)
+        earth = Planet("earth", "models/earth_1k_tex.jpg", "models/planet_sphere", self.orbitscale, self.sizescale, [moon], self.dayscale, self.yearscale, True)
+        sun = Planet("sun", "models/sun_1k_tex.jpg", "models/planet_sphere", 0, 2 * self.sizescale, None, 20, None, True)
 
         self.runtime.addPlanet(render, mercury)
         self.runtime.addPlanet(render, venus)
         self.runtime.addPlanet(render, mars)
         self.runtime.addPlanet(render, earth)
         self.runtime.addPlanet(render, sun)
+        self.runtime.addPlanet(render, sky)
 
 # end class world
 
