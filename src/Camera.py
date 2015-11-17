@@ -30,12 +30,6 @@ class Camera(object):
         if (self.mousebtn[1]) or (self.mousebtn[2]):
             self.focus = self.focus - dir * elapsed*30
         base.camera.setPos(self.focus - (dir*5))
-        if (base.camera.getX() < -59.0): base.camera.setX(-59)
-        if (base.camera.getX() >  59.0): base.camera.setX( 59)
-        if (base.camera.getY() < -59.0): base.camera.setY(-59)
-        if (base.camera.getY() >  59.0): base.camera.setY( 59)
-        if (base.camera.getZ() <   5.0): base.camera.setZ(  5)
-        if (base.camera.getZ() >  45.0): base.camera.setZ( 45)
         self.focus = base.camera.getPos() + (dir*5)
         self.last = task.time
         return Task.cont

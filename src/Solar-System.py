@@ -65,7 +65,7 @@ class World(DirectObject):
         # -mayChange argument lets us change the text later in the program.
         #       By default mayChange is set to 0. Trying to change text when
         #       mayChange is set to 0 will cause the program to crash.
-        self.title = OnscreenText(text="Panda3D: Tutorial 3 - Events",
+        self.title = OnscreenText(text="Solarsystem",
                                   style=1, fg=(1, 1, 1, 1),
                                   pos=(0.9, -0.95), scale=.07)
 
@@ -89,7 +89,7 @@ class World(DirectObject):
         # completes to tell the counter to update
 
 
-        # taskMgr.add(self.camera.controlCamera, "camera-task")
+        taskMgr.add(self.camera.controlCamera, "camera-task")
         self.accept("escape", sys.exit)  # Exit the program when escape is pressed
         self.accept("space", self.handleMouseClick)
         self.accept("t", self.eventHandler.toggleTexture)
@@ -131,8 +131,7 @@ class World(DirectObject):
         mercury = Planet("mercury", "models/mercury_1k_tex.jpg", "models/planet_sphere", 0.38 * self.orbitscale, 0.385 * self.sizescale, None, 59 * self.dayscale, 0.241 * self.yearscale, True)
         venus = Planet("venus", "models/venus_1k_tex.jpg", "models/planet_sphere", 0.72 * self.orbitscale, 0.923 * self.sizescale, None, 243 * self.dayscale, 0.615 * self.yearscale, True)
         mars = Planet("mars", "models/mars_1k_tex.jpg", "models/planet_sphere", 1.52 * self.orbitscale, 0.515 * self.sizescale, None, 1.03 * self.dayscale, 1.881 * self.yearscale, True)
-        moon2 = Planet("moon2", "models/moon_1k_tex.jpg", "models/planet_sphere", 0.025 * self.orbitscale, 0.1 * self.sizescale, None, .0749 * self.yearscale, .09 * self.yearscale, True)
-        moon = Planet("moon", "models/moon_1k_tex.jpg", "models/planet_sphere", 0.1 * self.orbitscale, 0.1 * self.sizescale, [moon2], .0749 * self.yearscale, .0749 * self.yearscale, True)
+        moon = Planet("moon", "models/moon_1k_tex.jpg", "models/planet_sphere", 0.1 * self.orbitscale, 0.1 * self.sizescale, None, .0749 * self.yearscale, .0749 * self.yearscale, True)
         earth = Planet("earth", "models/earth_1k_tex.jpg", "models/planet_sphere", self.orbitscale, self.sizescale, [moon], self.dayscale, self.yearscale, True)
         sun = Planet("sun", "models/sun_1k_tex.jpg", "models/planet_sphere", 0, 2 * self.sizescale, None, 20, None, True)
 
