@@ -36,24 +36,26 @@ class Camera(object):
         elapsed = task.time - self.last
         if (self.last == 0): elapsed = 0
 
-        if self.checkArea(self.size)==True:
-            if (self.mousebtn[0]):
-                self.focus = self.focus + dir * elapsed*30
-            if self.mousebtn[1]:
-                self.focus = self.focus - dir * elapsed*30
+        if (self.mousebtn[0]):
+            self.focus = self.focus + dir * elapsed*30
+        if self.mousebtn[1]:
+            self.focus = self.focus - dir * elapsed*30
 
-            base.camera.setPos(self.focus - (dir*5))
+        base.camera.setPos(self.focus - (dir*5))
 
-            if self.mousebtn[2]:
-                base.camera.setX(base.camera, -elapsed*30)
-            if self.mousebtn[3]:
-                base.camera.setX(base.camera, elapsed*30)
-            if self.mousebtn[4]:
-                base.camera.setZ(base.camera, elapsed*30)
-            if self.mousebtn[5]:
-                base.camera.setZ(base.camera, -elapsed*30)
+        if self.mousebtn[2]:
+            base.camera.setX(base.camera, -elapsed*30)
+        if self.mousebtn[3]:
+            base.camera.setX(base.camera, elapsed*30)
+        if self.mousebtn[4]:
+            base.camera.setZ(base.camera, elapsed*30)
+        if self.mousebtn[5]:
+            base.camera.setZ(base.camera, -elapsed*30)
 
-            self.focus = base.camera.getPos() + (dir*5)
+        self.focus = base.camera.getPos() + (dir*5)
+
+        # self.checkArea(self.size)
+
         self.last = task.time
         return Task.cont
 
@@ -61,30 +63,28 @@ class Camera(object):
         self.mousebtn[btn] = value
 
     def checkArea(self, size):
-        # Satz des Pythagoras
 
-        xy= sqrt(base.camera.getX()**2+base.camera.getX()**2)
-        xyz= sqrt(xy**2+base.camera.getZ()**2)
+        print("Size: %f", size)
+        print("X: %f", base.camera.getX())
+        print("Y: %f", base.camera.getY())
+        print("Z: %f", base.camera.getZ())
 
-        if (xyz>size):
-            return False
-        else:
-            return True
+        area = size
 
-        # if base.camera.getX() > size:
-        #     base.camera.setX(size)
-        #
-        # if base.camera.getY() > size:
-        #     base.camera.setY(size)
-        #
-        # if base.camera.getZ() > size:
-        #     base.camera.setZ(size)
-        #
-        # if base.camera.getX() < size*-1:
-        #     base.camera.setX(size*-1)
-        #
-        # if base.camera.getY() < size*-1:
-        #     base.camera.setX(size*-1)
-        #
-        # if base.camera.getZ() < size*-1:
-        #     base.camera.setX(size*-1)
+        if base.camera.getX() > area:
+            base.camera.setX(area)
+
+        if base.camera.getY() > area:
+            base.camera.setY(area)
+
+        if base.camera.getZ() > area:
+            base.camera.setZ(area)
+
+        if base.camera.getX() < area*-1:
+            base.camera.setX(area*-1)
+
+        if base.camera.getY() < area*-1:
+            base.camera.setY(area*-1)
+
+        if base.camera.getZ() < area*-1:
+            base.camera.setZ(area*-1)

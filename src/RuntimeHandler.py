@@ -77,7 +77,6 @@ class RuntimeHandler(object):
         self.editSpeedPlaying(1)
 
     def restartSimulation(self):
-        self.togglePlaying()
         for orbit in self.orbitList:
             self.orbitList[orbit].setPlayRate(0)
             # self.orbitList[orbit].setPlayRate(1)

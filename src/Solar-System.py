@@ -161,13 +161,16 @@ class World(DirectObject):
         venus = Planet("venus", "models/venus_1k_tex.jpg", "models/planet_sphere", 0.72 * self.orbitscale, 0.923 * self.sizescale, None, 243 * self.dayscale, 0.615 * self.yearscale, True)
         mars = Planet("mars", "models/mars_1k_tex.jpg", "models/planet_sphere", 1.52 * self.orbitscale, 0.515 * self.sizescale, None, 1.03 * self.dayscale, 1.881 * self.yearscale, True)
         moon = Planet("moon", "models/moon_1k_tex.jpg", "models/planet_sphere", 0.1 * self.orbitscale, 0.1 * self.sizescale, None, .0749 * self.yearscale, .0749 * self.yearscale, True)
+        asteroid = Planet("asteroid", "models/asteroid.jpg", "models/planet_sphere", 0.3 * self.orbitscale, 0.5 * self.sizescale, None, .0749 * self.yearscale, .0749 * self.yearscale, True)
         earth = Planet("earth", "models/earth_1k_tex.jpg", "models/planet_sphere", self.orbitscale, self.sizescale, [moon], self.dayscale, self.yearscale, True)
-        sun = Planet("sun", "models/sun_1k_tex.jpg", "models/planet_sphere", 0, 2 * self.sizescale, None, 20, None, True)
+        gas = Planet("gas", "models/gas-planet.png", "models/planet_sphere", 2 * self.orbitscale, 1.5 * self.sizescale, [asteroid], 300*self.dayscale, 3*self.yearscale, True)
+        sun = Planet("sun", "models/sun_1k_tex.jpg", "models/planet_sphere", 0, 3 * self.sizescale, None, 20, None, True)
 
         self.runtime.addPlanet(render, mercury)
         self.runtime.addPlanet(render, venus)
         self.runtime.addPlanet(render, mars)
         self.runtime.addPlanet(render, earth)
+        self.runtime.addPlanet(render, gas)
         self.runtime.addPlanet(render, sun)
         self.runtime.addPlanet(render, sky)
 
