@@ -28,11 +28,15 @@ class EventHandler(object):
                     planets[planet].enableTexture()
             self.textureOn = True
 
+    def restartSimulation(self):
+        self.runtime.restartSimulation()
+
     def toggleSimulation(self):
-        pass
+        self.runtime.togglePlaying()
 
     def fasterSimulation(self):
         self.runtime.fasterPlaying()
 
     def slowerSimulation(self):
         self.runtime.slowerPlaying()
+

@@ -37,12 +37,12 @@ class World(DirectObject):
 
         self.runtime = RuntimeHandler()
         self.eventHandler = EventHandler(self.runtime)
-        self.camera = Camera()
+        self.camera = Camera(render, 40)
         # The standard camera position and background initialization
         base.setBackgroundColor(0, 0, 0)
-        base.disableMouse()
-        camera.setPos(0, 0, 45)
-        camera.setHpr(0, -90, 0)
+        # base.disableMouse()
+        # camera.setPos(0, 0, 45)
+        # camera.setHpr(0, -90, 0)
 
         # The global variables we used to control the speed and size of objects
         self.yearscale = 60
@@ -73,7 +73,7 @@ class World(DirectObject):
             "ESC: Quit program", 0)
 
         self.spaceEventText = self.genLabelText(
-            "Space: Toggle entire Solar System [RUNNING]", 1)
+            "Space: Toggle entire Solar System", 1)
 
         self.tEventText = self.genLabelText(
             "T: Toggle the Texture", 2)
@@ -100,9 +100,6 @@ class World(DirectObject):
         self.lEventText = self.genLabelText(
             "J: Go downward", 11)
 
-        self.simRunning = True  # boolean to keep track of the
-        # state of the global simulation
-
         # Events
         # Each self.accept statement creates an event handler object that will call
         # the specified function when that event occurs.
@@ -116,11 +113,12 @@ class World(DirectObject):
 
         taskMgr.add(self.camera.controlCamera, "camera-task")
         self.accept("escape", sys.exit)  # Exit the program when escape is pressed
-        self.accept("space", self.handleMouseClick)
+        self.accept("space", self.eventHandler.toggleSimulation)
         self.accept("t", self.eventHandler.toggleTexture)
         self.accept("l", self.eventHandler.toggleLight)
         self.accept("n", self.eventHandler.fasterSimulation)
         self.accept("m", self.eventHandler.slowerSimulation)
+        self.accept("r", self.eventHandler.restartSimulation)
 
         self.accept("w", self.camera.setMouseBtn, [0, 1])
         self.accept("arrow_up", self.camera.setMouseBtn, [0, 1])
@@ -150,23 +148,6 @@ class World(DirectObject):
 
 
     # end __init__
-
-    def handleMouseClick(self):
-        # When the mouse is clicked, if the simulation is running pause all the
-        # planets and sun, otherwise resume it
-        if self.simRunning:
-            # changing the text to reflect the change from "RUNNING" to "PAUSED"
-            self.spaceEventText.setText(
-                "Space: Toggle entire Solar System [PAUSED]")
-        else:
-            self.spaceEventText.setText(
-                "Space: Toggle entire Solar System [RUNNING]")
-
-        self.runtime.togglePlaying()
-        # toggle self.simRunning
-        self.simRunning = not self.simRunning
-
-    # end handleMouseClick
 
     #########################################################################
     # Except for the one commented line below, this is all as it was before #

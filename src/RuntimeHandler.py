@@ -1,4 +1,5 @@
 from panda3d.core import TextNode, Vec3, Vec4
+import time
 
 class RuntimeHandler(object):
     def __init__(self):
@@ -44,21 +45,47 @@ class RuntimeHandler(object):
             else:
                 self.orbitList[orbit].resume()
 
+            if self.orbitList[orbit].getPlayRate()==0:
+                self.orbitList[orbit].setPlayRate(1)
+
         for selfRotate in self.selfRotateList:
             if self.selfRotateList[selfRotate].isPlaying():
                 self.selfRotateList[selfRotate].pause()
             else:
                 self.selfRotateList[selfRotate].resume()
 
+            if self.selfRotateList[selfRotate].getPlayRate()==0:
+                self.selfRotateList[selfRotate].setPlayRate(1)
+
     def editSpeedPlaying(self, speed):
         for orbit in self.orbitList:
+            self.orbitList[orbit].resume()
+            if self.orbitList[orbit].getPlayRate() + speed == 0:
+                self.orbitList[orbit].setPlayRate(self.orbitList[orbit].getPlayRate() + 2*speed)
+                continue
+
             self.orbitList[orbit].setPlayRate(self.orbitList[orbit].getPlayRate() + speed)
 
         for selfRotate in self.selfRotateList:
+            self.selfRotateList[selfRotate].resume()
+            if self.selfRotateList[selfRotate].getPlayRate() + speed == 0:
+                self.selfRotateList[selfRotate].setPlayRate(self.selfRotateList[selfRotate].getPlayRate() + 2*speed)
+                continue
             self.selfRotateList[selfRotate].setPlayRate(self.selfRotateList[selfRotate].getPlayRate() + speed)
 
     def fasterPlaying(self):
         self.editSpeedPlaying(1)
+
+    def restartSimulation(self):
+        self.togglePlaying()
+        for orbit in self.orbitList:
+            self.orbitList[orbit].setPlayRate(0)
+            # self.orbitList[orbit].setPlayRate(1)
+
+
+        for selfRotate in self.selfRotateList:
+            self.selfRotateList[selfRotate].setPlayRate(0)
+            # self.selfRotateList[selfRotate].setPlayRate(1)
 
     def slowerPlaying(self):
         self.editSpeedPlaying(-1)
