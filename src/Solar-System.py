@@ -155,8 +155,6 @@ class World(DirectObject):
     #########################################################################
 
     def loadPlanets(self):
-        sky = Planet("sky", "models/stars_1k_tex.jpg", "models/solar_sky_sphere", None, 40, None, None, None, False)
-
         mercury = Planet("mercury", "models/mercury_1k_tex.jpg", "models/planet_sphere", 0.38 * self.orbitscale, 0.385 * self.sizescale, None, 59 * self.dayscale, 0.241 * self.yearscale, True)
         venus = Planet("venus", "models/venus_1k_tex.jpg", "models/planet_sphere", 0.72 * self.orbitscale, 0.923 * self.sizescale, None, 243 * self.dayscale, 0.615 * self.yearscale, True)
         mars = Planet("mars", "models/mars_1k_tex.jpg", "models/planet_sphere", 1.52 * self.orbitscale, 0.515 * self.sizescale, None, 1.03 * self.dayscale, 1.881 * self.yearscale, True)
@@ -164,14 +162,10 @@ class World(DirectObject):
         asteroid = Planet("asteroid", "models/asteroid.jpg", "models/planet_sphere", 0.3 * self.orbitscale, 0.5 * self.sizescale, None, .0749 * self.yearscale, .0749 * self.yearscale, True)
         earth = Planet("earth", "models/earth_1k_tex.jpg", "models/planet_sphere", self.orbitscale, self.sizescale, [moon], self.dayscale, self.yearscale, True)
         gas = Planet("gas", "models/gas-planet.png", "models/planet_sphere", 2 * self.orbitscale, 1.5 * self.sizescale, [asteroid], 300*self.dayscale, 3*self.yearscale, True)
-        sun = Planet("sun", "models/sun_1k_tex.jpg", "models/planet_sphere", 0, 3 * self.sizescale, None, 20, None, True)
+        sun = Planet("sun", "models/sun_1k_tex.jpg", "models/planet_sphere", 0, 3 * self.sizescale, [mercury, venus, mars, earth, gas], 20, None, True)
 
-        self.runtime.addPlanet(render, mercury)
-        self.runtime.addPlanet(render, venus)
-        self.runtime.addPlanet(render, mars)
-        self.runtime.addPlanet(render, earth)
-        self.runtime.addPlanet(render, gas)
-        self.runtime.addPlanet(render, sun)
+        sky = Planet("sky", "models/stars_1k_tex.jpg", "models/solar_sky_sphere", 0, 40, [sun], None, None, False)
+
         self.runtime.addPlanet(render, sky)
 
 # end class world
