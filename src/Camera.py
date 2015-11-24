@@ -80,11 +80,11 @@ class Camera(object):
         xy = sqrt(base.camera.getX() ** 2 + base.camera.getY() ** 2)
         xyz = sqrt(xy ** 2 + base.camera.getZ() ** 2)
 
-        print("Size: %f", size)
-        print("X: %f", base.camera.getX())
-        print("Y: %f", base.camera.getY())
-        print("Z: %f", base.camera.getZ())
-        print("r: %f", xyz)
+        # print("Size: %f", size)
+        # print("X: %f", base.camera.getX())
+        # print("Y: %f", base.camera.getY())
+        # print("Z: %f", base.camera.getZ())
+        # print("r: %f", xyz)
 
         if xyz > size:
             base.camera.setX(self.lastX)

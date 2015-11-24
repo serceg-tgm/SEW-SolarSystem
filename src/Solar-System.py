@@ -44,13 +44,14 @@ class World(DirectObject):
         self.skySize = 80
 
         self.runtime = RuntimeHandler()
-        self.eventHandler = EventHandler(self.runtime)
         self.camera = Camera(render, self.skySize)
 
         taskMgr.add(self.camera.controlCamera, "camera-task")
 
         self.loadPlanets()  # Load, texture, and position the planets
         self.runtime.rotatePlanets()  # Set up the motion to start them moving
+
+        self.eventHandler = EventHandler(self.runtime)
 
         base.setBackgroundColor(0, 0, 0)
 

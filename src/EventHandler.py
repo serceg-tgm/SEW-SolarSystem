@@ -1,25 +1,47 @@
-from panda3d.core import PointLight, AmbientLight
-from panda3d.core import Point3,Vec3,Vec4,VBase4
+from panda3d.core import AmbientLight, PointLight, VBase4
 
 class EventHandler(object):
     def __init__(self, runtime):
         self.runtime = runtime
         self.pointlightOn = True
         self.textureOn = True
+        self.initializeLight()
+        self.lightOn = True
 
-    def toggleLight(self):
+    def initializeLight(self):
+
         alight = AmbientLight('alight')
         alight.setColor(VBase4(0.2, 0.2, 0.2, 1))
-        alnp = render.attachNewNode(alight)
-        self.sun = self.runtime.getPlanet('sun')
-        #self.render.reparentTo(render)
-        self.sun.model.setLight(alnp)
+        self.alnp = render.attachNewNode(alight)
+
+        sunLight = AmbientLight('slight')
+        sunLight.setColor(VBase4(0.7, 0.7, 0.7, 1))
+        sun = self.runtime.getPlanet('sun')
+        self.slnp = sun.model.attachNewNode(sunLight)
+        sun.model.setLight(self.slnp)
 
         plight = PointLight('plight')
-        plight.setColor(VBase4(0.2, 0.2, 0.2, 1))
-        plnp = render.attachNewNode(plight)
-        plnp.setPos(0, 0, 0)
-        render.setLight(plnp)
+        plight.setColor(VBase4(0.7, 0.7, 0.7, 1))
+        self.plnp = render.attachNewNode(plight)
+        self.plnp.setPos(0, 0, 0)
+        render.setLight(self.plnp)
+
+    def toggleLight(self):
+
+        sun = self.runtime.getPlanet('sun')
+        if self.lightOn == True:
+            sun.model.setLightOff()
+            render.setLightOff()
+            # render.setLight(self.alnp)
+            self.lightOn = False
+        else:
+            sun.model.setLightOff()
+            sun.model.setLight(self.slnp)
+            render.setLightOff()
+            render.setLight(self.plnp)
+            self.lightOn = True
+
+        print(self.lightOn)
 
     def toggleTexture(self):
         planets = self.runtime.getAllPlanets()
