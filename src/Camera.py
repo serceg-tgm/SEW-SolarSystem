@@ -56,11 +56,6 @@ class Camera(object):
 
         # self.checkArea(self.size)
 
-        print("Size: %f", self.size)
-        print("X: %f", base.camera.getX())
-        print("Y: %f", base.camera.getY())
-        print("Z: %f", base.camera.getZ())
-
         self.last = task.time
         return Task.cont#
 
