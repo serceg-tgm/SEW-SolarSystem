@@ -13,6 +13,7 @@ from panda3d.core import TextNode, Vec3, Vec4
 from direct.interval.IntervalGlobal import *
 from direct.gui.DirectGui import *
 from direct.showbase.DirectObject import DirectObject
+from pandac.PandaModules import WindowProperties
 import sys
 from RuntimeHandler import *
 from Planet import *
@@ -30,6 +31,10 @@ class World(DirectObject):
 
     def __init__(self):
 
+        props = WindowProperties()
+        props.setTitle('Solarsystem')
+        base.win.requestProperties(props)
+
         self.runtime = RuntimeHandler()
         self.eventHandler = EventHandler(self.runtime)
         self.camera = Camera(render, 40)
@@ -46,16 +51,11 @@ class World(DirectObject):
         self.loadPlanets()  # Load, texture, and position the planets
         self.runtime.rotatePlanets()  # Set up the motion to start them moving
 
-        self.title = OnscreenText(text="Solarsystem",
-                                  style=1, fg=(1, 1, 1, 1),
-                                  pos=(0.9, -0.95), scale=.07)
+        # self.title = OnscreenText(text="Solarsystem",
+        #                           style=1, fg=(1, 1, 1, 1),
+        #                           pos=(0.9, -0.95), scale=.07)
         self.setLegend()
         self.setEvents()
-
-
-
-
-
 
     # end __init__
 
