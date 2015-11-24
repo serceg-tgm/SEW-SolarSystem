@@ -33,20 +33,24 @@ class World(DirectObject):
 
         props = WindowProperties()
         props.setTitle('Solarsystem')
+        props.setCursorHidden(True)
         base.win.requestProperties(props)
-
-        self.runtime = RuntimeHandler()
-        self.eventHandler = EventHandler(self.runtime)
-        self.camera = Camera(render, 40)
-
-        taskMgr.add(self.camera.controlCamera, "camera-task")
-        base.setBackgroundColor(0, 0, 0)
 
         # The global variables we used to control the speed and size of objects
         self.yearscale = 60
         self.dayscale = self.yearscale / 365.0 * 5
         self.orbitscale = 10
         self.sizescale = 0.6
+        self.skySize = 80
+
+        self.runtime = RuntimeHandler()
+        self.eventHandler = EventHandler(self.runtime)
+        self.camera = Camera(render, self.skySize)
+
+        taskMgr.add(self.camera.controlCamera, "camera-task")
+        base.setBackgroundColor(0, 0, 0)
+
+
 
         self.loadPlanets()  # Load, texture, and position the planets
         self.runtime.rotatePlanets()  # Set up the motion to start them moving
@@ -147,7 +151,7 @@ class World(DirectObject):
         gas = Planet("gas", "models/gas-planet.png", "models/planet_sphere", 2 * self.orbitscale, 1.5 * self.sizescale, [asteroid], 300*self.dayscale, 3*self.yearscale, True)
         sun = Planet("sun", "models/sun_1k_tex.jpg", "models/planet_sphere", 0, 3 * self.sizescale, [mercury, venus, mars, earth, gas], 20, None, True)
 
-        sky = Planet("sky", "models/stars_1k_tex.jpg", "models/solar_sky_sphere", 0, 40, [sun], None, None, False)
+        sky = Planet("sky", "models/stars_1k_tex.jpg", "models/solar_sky_sphere", 0, self.skySize, [sun], None, None, False)
 
         self.runtime.addPlanet(render, sky)
 
