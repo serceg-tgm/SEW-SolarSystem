@@ -103,6 +103,7 @@ class World(DirectObject):
         self.accept("n", self.eventHandler.fasterSimulation)
         self.accept("m", self.eventHandler.slowerSimulation)
         self.accept("r", self.eventHandler.restartSimulation)
+        self.accept("b", self.camera.birdPerspective)
 
         self.accept("w", self.camera.setMouseBtn, [0, 1])
         self.accept("arrow_up", self.camera.setMouseBtn, [0, 1])

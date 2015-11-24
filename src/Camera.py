@@ -56,8 +56,17 @@ class Camera(object):
 
         # self.checkArea(self.size)
 
+        print("Size: %f", self.size)
+        print("X: %f", base.camera.getX())
+        print("Y: %f", base.camera.getY())
+        print("Z: %f", base.camera.getZ())
+
         self.last = task.time
-        return Task.cont
+        return Task.cont#
+
+    def birdPerspective(self):
+        self.pitch = -90
+        self.focus = Vec3(0,0,70)
 
     def setMouseBtn(self, btn, value):
         self.mousebtn[btn] = value
