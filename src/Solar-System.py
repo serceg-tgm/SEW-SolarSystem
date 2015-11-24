@@ -52,20 +52,12 @@ class World(DirectObject):
         self.loadPlanets()  # Load, texture, and position the planets
         self.runtime.rotatePlanets()  # Set up the motion to start them moving
 
-        self.prepareBackground()
+        base.setBackgroundColor(0, 0, 0)
 
         self.setLegend()
         self.setEvents()
 
     # end __init__
-
-    def prepareBackground(self):
-        base.setBackgroundColor(0, 0, 0)
-
-        alight = AmbientLight('alight')
-        alight.setColor(VBase4(0.5, 0.5, 0.5, 1))
-        alnp = render.attachNewNode(alight)
-        render.setLight(alnp)
 
     def genLabelText(self, text, i):
         return OnscreenText(text=text, pos=(-1.3, .95 - .05 * i), fg=(1, 1, 1, 1),
