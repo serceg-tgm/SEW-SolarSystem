@@ -9,7 +9,7 @@
 
 import direct.directbase.DirectStart
 from direct.showbase import DirectObject
-from panda3d.core import TextNode, Vec3, Vec4
+from panda3d.core import TextNode, Vec3, Vec4, AmbientLight, VBase4, PointLight
 from direct.interval.IntervalGlobal import *
 from direct.gui.DirectGui import *
 from direct.showbase.DirectObject import DirectObject
@@ -48,20 +48,24 @@ class World(DirectObject):
         self.camera = Camera(render, self.skySize)
 
         taskMgr.add(self.camera.controlCamera, "camera-task")
-        base.setBackgroundColor(0, 0, 0)
-
-
 
         self.loadPlanets()  # Load, texture, and position the planets
         self.runtime.rotatePlanets()  # Set up the motion to start them moving
 
-        # self.title = OnscreenText(text="Solarsystem",
-        #                           style=1, fg=(1, 1, 1, 1),
-        #                           pos=(0.9, -0.95), scale=.07)
+        self.prepareBackground()
+
         self.setLegend()
         self.setEvents()
 
     # end __init__
+
+    def prepareBackground(self):
+        base.setBackgroundColor(0, 0, 0)
+
+        alight = AmbientLight('alight')
+        alight.setColor(VBase4(0.5, 0.5, 0.5, 1))
+        alnp = render.attachNewNode(alight)
+        render.setLight(alnp)
 
     def genLabelText(self, text, i):
         return OnscreenText(text=text, pos=(-1.3, .95 - .05 * i), fg=(1, 1, 1, 1),
