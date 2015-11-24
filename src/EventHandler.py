@@ -12,8 +12,8 @@ class EventHandler(object):
         alight.setColor(Vec4(0.2, 0.2, 0.2, 1))
         alnp = render.attachNewNode(alight)
         self.sun = self.runtime.getPlanet('sun')
-        self.sun.reparentTo(render)
-        self.sun.setLight(alnp)
+        self.sun.model.reparentTo(render)
+        self.sun.model.setLight(alnp)
 
     def toggleTexture(self):
         planets = self.runtime.getAllPlanets()
