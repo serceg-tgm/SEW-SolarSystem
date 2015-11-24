@@ -27,22 +27,15 @@ from EventHandler import *
 # tutorial will be a subclass of DirectObject
 
 class World(DirectObject):
-    # Macro-like function used to reduce the amount to code needed to create the
-    # on screen instructions
-    def genLabelText(self, text, i):
-        return OnscreenText(text=text, pos=(-1.3, .95 - .05 * i), fg=(1, 1, 1, 1),
-                            align=TextNode.ALeft, scale=.05, mayChange=1)
 
     def __init__(self):
 
         self.runtime = RuntimeHandler()
         self.eventHandler = EventHandler(self.runtime)
         self.camera = Camera(render, 40)
-        # The standard camera position and background initialization
+
+        taskMgr.add(self.camera.controlCamera, "camera-task")
         base.setBackgroundColor(0, 0, 0)
-        # base.disableMouse()
-        # camera.setPos(0, 0, 45)
-        # camera.setHpr(0, -90, 0)
 
         # The global variables we used to control the speed and size of objects
         self.yearscale = 60
@@ -53,22 +46,24 @@ class World(DirectObject):
         self.loadPlanets()  # Load, texture, and position the planets
         self.runtime.rotatePlanets()  # Set up the motion to start them moving
 
-        # The standard title text that's in every tutorial
-        # Things to note:
-        # -fg represents the forground color of the text in (r,g,b,a) format
-        # -pos  represents the position of the text on the screen.
-        #      The coordinate system is a x-y based wih 0,0 as the center of the
-        #      screen
-        # -align sets the alingment of the text relative to the pos argument.
-        #      Default is center align.
-        # -scale set the scale of the text
-        # -mayChange argument lets us change the text later in the program.
-        #       By default mayChange is set to 0. Trying to change text when
-        #       mayChange is set to 0 will cause the program to crash.
         self.title = OnscreenText(text="Solarsystem",
                                   style=1, fg=(1, 1, 1, 1),
                                   pos=(0.9, -0.95), scale=.07)
+        self.setLegend()
+        self.setEvents()
 
+
+
+
+
+
+    # end __init__
+
+    def genLabelText(self, text, i):
+        return OnscreenText(text=text, pos=(-1.3, .95 - .05 * i), fg=(1, 1, 1, 1),
+                            align=TextNode.ALeft, scale=.05, mayChange=1)
+
+    def setLegend(self):
         self.escEventText = self.genLabelText(
             "ESC: Quit program", 0)
 
@@ -100,19 +95,8 @@ class World(DirectObject):
         self.lEventText = self.genLabelText(
             "J: Go downward", 11)
 
-        # Events
-        # Each self.accept statement creates an event handler object that will call
-        # the specified function when that event occurs.
-        # Certain events like "mouse1", "a", "b", "c" ... "z", "1", "2", "3"..."0"
-        # are references to keyboard keys and mouse buttons. You can also define
-        # your own events to be used within your program. In this tutorial, the
-        # event "newYear" is not tied to a physical input device, but rather
-        # is sent by the function that rotates the Earth whenever a revolution
-        # completes to tell the counter to update
-
-
-        taskMgr.add(self.camera.controlCamera, "camera-task")
-        self.accept("escape", sys.exit)  # Exit the program when escape is pressed
+    def setEvents(self):
+        self.accept("escape", sys.exit)
         self.accept("space", self.eventHandler.toggleSimulation)
         self.accept("t", self.eventHandler.toggleTexture)
         self.accept("l", self.eventHandler.toggleLight)
@@ -146,8 +130,6 @@ class World(DirectObject):
         self.accept("j", self.camera.setMouseBtn, [5, 1])
         self.accept("j-up", self.camera.setMouseBtn, [5, 0])
 
-
-    # end __init__
 
     #########################################################################
     # Except for the one commented line below, this is all as it was before #

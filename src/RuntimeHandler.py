@@ -18,9 +18,6 @@ class RuntimeHandler(object):
                 self.rootList[child.name] = (self.rootList[planet.name].attachNewNode(child.name))
                 self.rootList[child.name].setPos(planet.initPosition, 0, 0)
                 self.addPlanet(render,child)
-                # if (child.orbitRotate):
-                #     self.orbitList[child.name] = self.rootList[child.name].hprInterval((child.orbitRotate), Vec3(360, 0, 0))
-                #     self.selfRotateList[child.name] = child.hprInterval((child.selfRotate), Vec3(360, 0, 0))
 
         if (planet.selfRotate):
             self.selfRotateList[planet.name] = planet.model.hprInterval((planet.selfRotate), Vec3(360, 0, 0))
