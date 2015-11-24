@@ -66,34 +66,30 @@ class World(DirectObject):
     def setLegend(self):
         self.escEventText = self.genLabelText(
             "ESC: Quit program", 0)
-
         self.spaceEventText = self.genLabelText(
             "Space: Toggle entire Solar System", 1)
-
         self.tEventText = self.genLabelText(
             "T: Toggle the Texture", 2)
-
         self.lEventText = self.genLabelText(
             "L: Toggle the Point-Light Source", 3)
-
         self.nEventText = self.genLabelText(
             "N: Make the simulation faster", 4)
-
         self.mEventText = self.genLabelText(
-            "M: Make the sumulation slower", 5)
-
+            "M: Make the simulation slower", 5)
         self.lEventText = self.genLabelText(
             "W|Arrow-up: Go forward", 6)
+        self.bEventText = self.genLabelText(
+            "B: Bird's-eye view", 7)
         self.lEventText = self.genLabelText(
-            "S|Arrow-down: Go backward", 7)
+            "S|Arrow-down: Go backward", 8)
         self.lEventText = self.genLabelText(
-            "A|Arrow-left: Go left", 8)
+            "A|Arrow-left: Go left", 9)
         self.lEventText = self.genLabelText(
-            "D|Arrow-right: Go right", 9)
+            "D|Arrow-right: Go right", 10)
         self.lEventText = self.genLabelText(
-            "U: Go upward", 10)
+            "U: Go upward", 11)
         self.lEventText = self.genLabelText(
-            "J: Go downward", 11)
+            "J: Go downward", 12)
 
     def setEvents(self):
         self.accept("escape", sys.exit)
