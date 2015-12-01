@@ -150,7 +150,9 @@ class World(DirectObject):
         asteroid = Planet("asteroid", "models/asteroid.jpg", "models/planet_sphere", 0.3 * self.orbitscale, 0.5 * self.sizescale, None, .0749 * self.yearscale, .0749 * self.yearscale, True)
         earth = Planet("earth", "models/earth_1k_tex.jpg", "models/planet_sphere", self.orbitscale, self.sizescale, [moon], self.dayscale, self.yearscale, True)
         gas = Planet("gas", "models/gas-planet.png", "models/planet_sphere", 2 * self.orbitscale, 1.5 * self.sizescale, [asteroid], 300*self.dayscale, 3*self.yearscale, True)
-        sun = Planet("sun", "models/sun_1k_tex.jpg", "models/planet_sphere", 0, 3 * self.sizescale, [mercury, venus, mars, earth, gas], 20, None, True)
+        ice = Planet("ice", "models/ice.jpg", "models/planet_sphere", 1.4 * self.orbitscale, 3 * self.sizescale, None, 0.5*self.dayscale, 4*self.yearscale, True)
+        brown = Planet("brown", "models/brown.jpg", "models/planet_sphere", 2.5 * self.orbitscale, 0.7 * self.sizescale, None, self.dayscale, 0.5*self.yearscale, True)
+        sun = Planet("sun", "models/sun_1k_tex.jpg", "models/planet_sphere", 0, 3 * self.sizescale, [mercury, venus, mars, earth, gas, ice, brown], 20, None, True)
 
         sky = Planet("sky", "models/stars_1k_tex.jpg", "models/solar_sky_sphere", 0, self.skySize, [sun], None, None, False)
 
