@@ -39,8 +39,6 @@ class EventHandler(object):
             render.setLight(self.plnp)
             self.lightOn = True
 
-        print(self.lightOn)
-
     def toggleTexture(self):
         planets = self.runtime.getAllPlanets()
         if self.textureOn == True:
