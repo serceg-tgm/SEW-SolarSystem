@@ -48,6 +48,9 @@ class World(DirectObject):
 
         taskMgr.add(self.camera.controlCamera, "camera-task")
 
+
+
+
         self.loadPlanets()  # Load, texture, and position the planets
         self.runtime.rotatePlanets()  # Set up the motion to start them moving
 
@@ -74,9 +77,9 @@ class World(DirectObject):
         self.lEventText = self.genLabelText(
             "L: Toggle the Point-Light Source", 3)
         self.nEventText = self.genLabelText(
-            "N: Make the simulation faster", 4)
+            "+: Make the simulation faster", 4)
         self.mEventText = self.genLabelText(
-            "M: Make the simulation slower", 5)
+            "-: Make the simulation slower", 5)
         self.lEventText = self.genLabelText(
             "W|Arrow-up: Go forward", 6)
         self.bEventText = self.genLabelText(
@@ -97,8 +100,8 @@ class World(DirectObject):
         self.accept("space", self.eventHandler.toggleSimulation)
         self.accept("t", self.eventHandler.toggleTexture)
         self.accept("l", self.eventHandler.toggleLight)
-        self.accept("n", self.eventHandler.fasterSimulation)
-        self.accept("m", self.eventHandler.slowerSimulation)
+        self.accept("+", self.eventHandler.fasterSimulation)
+        self.accept("-", self.eventHandler.slowerSimulation)
         self.accept("r", self.eventHandler.restartSimulation)
         self.accept("b", self.camera.birdPerspective)
 
@@ -124,9 +127,14 @@ class World(DirectObject):
 
         self.accept("u", self.camera.setMouseBtn, [4, 1])
         self.accept("u-up", self.camera.setMouseBtn, [4, 0])
+        self.accept("wheel_up", self.camera.setMouseBtn, [4, 1])
+        # self.accept("wheel_up-up", self.camera.setMouseBtn, [4, 0])
 
         self.accept("j", self.camera.setMouseBtn, [5, 1])
         self.accept("j-up", self.camera.setMouseBtn, [5, 0])
+        self.accept("wheel_down", self.camera.setMouseBtn, [5, 1])
+        # self.accept("wheel_down-up", self.camera.setMouseBtn, [5, 0])
+
 
 
     #########################################################################
