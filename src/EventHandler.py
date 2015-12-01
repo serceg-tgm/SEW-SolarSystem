@@ -10,38 +10,34 @@ class EventHandler(object):
 
     def initializeLight(self):
 
+        self.sunLight = AmbientLight('slight')
+        self.sunLight.setColor(VBase4(1, 1, 1, 1))
+        sun = self.runtime.getPlanet('sun')
+        slnp = sun.model.attachNewNode(self.sunLight)
+        sun.model.setLight(slnp)
+
         alight = AmbientLight('alight')
         alight.setColor(VBase4(0.2, 0.2, 0.2, 1))
         self.alnp = render.attachNewNode(alight)
 
-        sunLight = AmbientLight('slight')
-        sunLight.setColor(VBase4(0.7, 0.7, 0.7, 1))
-        sun = self.runtime.getPlanet('sun')
-        self.slnp = sun.model.attachNewNode(sunLight)
-        sun.model.setLight(self.slnp)
-
         plight = PointLight('plight')
-        plight.setColor(VBase4(0.7, 0.7, 0.7, 1))
+        plight.setColor(VBase4(1, 1, 1, 1))
         self.plnp = render.attachNewNode(plight)
         self.plnp.setPos(0, 0, 0)
         render.setLight(self.plnp)
 
     def toggleLight(self):
 
-        sun = self.runtime.getPlanet('sun')
         if self.lightOn == True:
-            sun.model.setLightOff()
+            self.sunLight.setColor(VBase4(0.2, 0.2, 0.2, 1))
             render.setLightOff()
-            # render.setLight(self.alnp)
+            render.setLight(self.alnp)
             self.lightOn = False
         else:
-            sun.model.setLightOff()
-            sun.model.setLight(self.slnp)
+            self.sunLight.setColor(VBase4(1, 1, 1, 1))
             render.setLightOff()
             render.setLight(self.plnp)
             self.lightOn = True
-
-        print(self.lightOn)
 
     def toggleTexture(self):
         planets = self.runtime.getAllPlanets()
