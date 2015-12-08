@@ -12,7 +12,20 @@ from EventHandler import *
 # to listen for and respond to events. From now on the main class in every
 # tutorial will be a subclass of DirectObject
 
-class World(DirectObject):
+class SolarSystem(DirectObject):
+
+    """ SolarSyste,
+
+    :ivar int yearscale: die Dauer einer Umdrehung um den Mittelpunkt
+    :ivar int dayscale: die Dauer fuer eine Umdrehung um sich selbst
+    :ivar int orbitscale: die Groesse der Umlaufbahn
+    :ivar int sizescale: die Groesse des Himmelskoerpers
+    :ivar int skySize: die Groesse des Weltraums
+    :ivar Camera camera: ermoeglich den Umgang mit einer Kamera
+    :ivar RuntimeHandler runtime: beinhaltet alle Himmelskoerper
+    :ivar EventHandler eventHandler:
+
+    """
 
     def __init__(self):
 
@@ -52,5 +65,5 @@ class World(DirectObject):
 
         self.runtime.addLuminary(render, sky)
 
-w = World()
+w = SolarSystem()
 run()
