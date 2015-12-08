@@ -31,12 +31,12 @@ class World(DirectObject):
         self.runtime = RuntimeHandler()
         self.camera = Camera(render, self.skySize)
 
-        self.loadLuminarys()
+        self.loadLuminaries()
         self.runtime.rotateLuminaries()
 
         self.eventHandler = EventHandler(self.runtime, self.camera, self.runtime.getLuminary('sun'))
 
-    def loadLuminarys(self):
+    def loadLuminaries(self):
         mercury = Luminary("mercury", "models/mercury_1k_tex.jpg", "models/planet_sphere", 0.38 * self.orbitscale, 0.385 * self.sizescale, None, 59 * self.dayscale, 0.241 * self.yearscale, True)
         venus = Luminary("venus", "models/venus_1k_tex.jpg", "models/planet_sphere", 0.72 * self.orbitscale, 0.923 * self.sizescale, None, 243 * self.dayscale, 0.615 * self.yearscale, True)
         mars = Luminary("mars", "models/mars_1k_tex.jpg", "models/planet_sphere", 1.52 * self.orbitscale, 0.515 * self.sizescale, None, 1.03 * self.dayscale, 1.881 * self.yearscale, True)
