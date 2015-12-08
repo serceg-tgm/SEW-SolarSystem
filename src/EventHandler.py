@@ -170,16 +170,16 @@ class EventHandler(DirectObject):
         wird die Textur entweder ein- oder ausgeschaltet. Davor werden alle Himmelskoerper geholt, damit die
         Aenderungen fuer jeden Himmelskoerper aktiv werden.
         """
-        luminary = self.runtime.getAllLuminaries()
+        luminaries = self.runtime.getAllLuminaries()
         if self.textureOn == True:
-            for luminary in luminary:
-                if luminary[luminary].textureToggle==True:
-                    luminary[luminary].disableTexture()
+            for luminary in luminaries:
+                if luminaries[luminary].textureToggle==True:
+                    luminaries[luminary].disableTexture()
             self.textureOn = False
         else:
-            for luminary in luminary:
-                if luminary[luminary].textureToggle==True:
-                    luminary[luminary].enableTexture()
+            for luminary in luminaries:
+                if luminaries[luminary].textureToggle==True:
+                    luminaries[luminary].enableTexture()
             self.textureOn = True
 
     def restartSimulation(self):
