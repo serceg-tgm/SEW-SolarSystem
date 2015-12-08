@@ -5,8 +5,17 @@ class Luminary(object):
     """
     def __init__(self, name, texturePath, modelPath, initPosition, scale, children, selfRotate, orbitRotate, textureToggle):
         """
-        Hier werden alle Attribute, welche zum Initialisieren eines Himmelskoerpers benoetigt werden, initialisiert.
-        Als Parameter
+        Hier werden alle Attribute, welche zum Erzeugen eines Himmelskoerpers benoetigt werden, initialisiert.
+
+        :param name: Name des Himmelskoerpers
+        :param texturePath: gibt den Pfad an, wo sich die Textur befindet
+        :param modelPath: gibt den Pfad zum Objekt an, welche die Form des Himmelskoerpers angibt
+        :param initPosition: initiale Position des Himmelskoerpers
+        :param scale: gibt die Groesse des Himmelskoerpers an
+        :param children: dient zur Definition der Kinder, die der jeweilige Himmelskoerper besitzt
+        :param selfRotate: gibt an, wie schnell sich der Himmelskoerper um sich selbst drehen soll
+        :param orbitRotate: gibt an, wie schnell sich der Himmelskoerper um die Laufbahn drehen soll
+        :param textureToggle: dient zur Definition, welche Texturen von Himmelskoerpern togglen sollen und welche nicht
         """
         self.orbitRotate = orbitRotate
         self.selfRotate = selfRotate
