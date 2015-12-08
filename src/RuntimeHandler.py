@@ -1,13 +1,37 @@
 from panda3d.core import TextNode, Vec3, Vec4
 
 class RuntimeHandler(object):
+
+    """ Stellt die sichtbaren Elemente des Solarsystems dar. Diese sind der Weltraum, die Planeten und andere Himmelskoerper
+
+    :ivar dictionary rootList: Liste der Nodepath eines Himmelskoerper
+    :ivar dictionary orbitList: Liste der Laufbahnen eines Himmelskoerpers
+    :ivar dictionary selfRotateList: Liste der Selbstrotationen eines Himmelskoerpers
+    :ivar dictionary luminaryList: Liste der Himmelskoerper
+
+    """
+
     def __init__(self):
+
+        """ Initialisiert die Runtime
+
+        """
+
         self.rootList = {}
         self.orbitList = {}
         self.selfRotateList = {}
         self.luminaryList = {}
 
+
     def addLuminary(self, render, luminary):
+
+        """ Fuegt einen neuen Himmelskoerper, der einen neuen Namen haben muss, in das Solarsystem ein.
+        Dabei kann ein Himmelskoerper aber noch "Kinder" haben. Die um diesen kreisen.
+
+        :param render: Gesamte Umgebung des Raumes
+        :param luminary: der hinzuzufuegende Himmelskoerper
+        """
+
         self.luminaryList[luminary.name] = luminary
         if luminary.name not in self.rootList:
             self.rootList[luminary.name] = render.attachNewNode(luminary.name)
@@ -27,7 +51,13 @@ class RuntimeHandler(object):
         else:
             luminary.model.reparentTo(render)
 
+
     def rotateLuminaries(self):
+
+        """ Laesst alle Himmelskoerper rotieren/starten
+
+        """
+
         for orbit in self.orbitList:
             self.orbitList[orbit].loop()
 
@@ -35,6 +65,11 @@ class RuntimeHandler(object):
             self.selfRotateList[selfRotate].loop()
 
     def togglePlaying(self):
+
+        """ Schaltet das Solarsystem ein oder aus. Falls das System resetet wurde, wird es bei Betaetigung wieder eingeschaltet
+
+        """
+
         for orbit in self.orbitList:
             if self.orbitList[orbit].isPlaying():
                 self.orbitList[orbit].pause()
@@ -54,6 +89,13 @@ class RuntimeHandler(object):
                 self.selfRotateList[selfRotate].setPlayRate(1)
 
     def editSpeedPlaying(self, speed):
+
+        """ Addiert die angegebene Geschwindigkeit zu der aktuellen. Sollte die Geschwindigkeit aber 0 ergeben, wuerde
+        sich die Simulation zuruecksetzen und deswegen wird dann das doppelte addiert
+
+        :param int speed: Geschwindigkeit, die addiert werden soll
+        """
+
         for orbit in self.orbitList:
             self.orbitList[orbit].resume()
             if self.orbitList[orbit].getPlayRate() + speed == 0:
@@ -70,20 +112,48 @@ class RuntimeHandler(object):
             self.selfRotateList[selfRotate].setPlayRate(self.selfRotateList[selfRotate].getPlayRate() + speed)
 
     def fasterPlaying(self):
+
+        """ Beschleunigt die Simulation um 1
+
+        """
+
         self.editSpeedPlaying(1)
 
+    def slowerPlaying(self):
+
+        """ Verlangsamt die Simulation um 1
+
+        """
+
+        self.editSpeedPlaying(-1)
+
     def restartSimulation(self):
+
+        """ Setzt die Simulation zurueck
+
+        """
+
         for orbit in self.orbitList:
             self.orbitList[orbit].setPlayRate(0)
 
         for selfRotate in self.selfRotateList:
             self.selfRotateList[selfRotate].setPlayRate(0)
 
-    def slowerPlaying(self):
-        self.editSpeedPlaying(-1)
-
     def getAllLuminaries(self):
+
+        """ Gibt alle Luminaries, die hinzugefuegt wurden, zurueck
+
+        :return: Alle Luminaries die hinzugefuegt wurden
+        """
+
         return self.luminaryList
 
     def getLuminary(self, name):
+
+        """ Gibt den gesuchten Himmelskoerper zurueck
+
+        :param name: Der Name des gesuchten Himmelskoerpers
+        :return: Der gesuchte Himmelskoerper
+        """
+
         return self.luminaryList[name]
