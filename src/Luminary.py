@@ -30,17 +30,3 @@ class Luminary(object):
         self.model.setScale(scale)
         if (initPosition):
             self.model.setPos(initPosition, 0, 0)
-
-    def disableTexture(self):
-        """
-        Mittels dieser Methode wird die Textur ausgeschaltet. Die Funktion wird in der Methode "toggleTexture"
-        aufgerufen, um die Textur bei jedem Himmelskoerper auszuschalten.
-        """
-        self.model.clearTexture()
-
-    def enableTexture(self):
-        """
-        Mittels dieser Methode wird die Textur eingeschaltet. Die Funktion wird in der Methode "toggleTexture"
-        aufgerufen, um die Textur bei jedem Himmelskoerper einzuschalten.
-        """
-        self.model.setTexture(loader.loadTexture(self.texturePath), 1)
