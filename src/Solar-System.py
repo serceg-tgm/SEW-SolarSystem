@@ -5,29 +5,26 @@ from Luminary import *
 from Camera import *
 from EventHandler import *
 
-
-
-# We start this tutorial with the standard class. However, the class is a
-# subclass of an object called DirectObject. This gives the class the ability
-# to listen for and respond to events. From now on the main class in every
-# tutorial will be a subclass of DirectObject
-
 class SolarSystem(DirectObject):
 
-    """ SolarSyste,
+    """ Simuliert einen Ablauf eines Sonnensystems welches mittels Tastendruecken gesteuert werden kann.
 
     :ivar int yearscale: die Dauer einer Umdrehung um den Mittelpunkt
     :ivar int dayscale: die Dauer fuer eine Umdrehung um sich selbst
     :ivar int orbitscale: die Groesse der Umlaufbahn
     :ivar int sizescale: die Groesse des Himmelskoerpers
     :ivar int skySize: die Groesse des Weltraums
-    :ivar Camera camera: ermoeglich den Umgang mit einer Kamera
+    :ivar Camera camera: ermoeglicht den Umgang mit einer Kamera
     :ivar RuntimeHandler runtime: beinhaltet alle Himmelskoerper
-    :ivar EventHandler eventHandler:
+    :ivar EventHandler eventHandler: verarbeitet Usereingaben
 
     """
 
     def __init__(self):
+
+        """ Initialisiert die Kamera, die Runtime und den Eventhandler. Ladet die Planeten und startet das Programm
+
+        """
 
         props = WindowProperties()
         props.setTitle('Solarsystem')
@@ -49,7 +46,13 @@ class SolarSystem(DirectObject):
 
         self.eventHandler = EventHandler(self.runtime, self.camera, self.runtime.getLuminary('sun'))
 
+
     def loadLuminaries(self):
+
+        """ Ladet definierte Himmelskoerper und stellt assoziationen zwischen diesen dar
+
+        """
+
         mercury = Luminary("mercury", "models/mercury_1k_tex.jpg", "models/planet_sphere", 0.38 * self.orbitscale, 0.385 * self.sizescale, None, 59 * self.dayscale, 0.241 * self.yearscale, True)
         venus = Luminary("venus", "models/venus_1k_tex.jpg", "models/planet_sphere", 0.72 * self.orbitscale, 0.923 * self.sizescale, None, 243 * self.dayscale, 0.615 * self.yearscale, True)
         mars = Luminary("mars", "models/mars_1k_tex.jpg", "models/planet_sphere", 1.52 * self.orbitscale, 0.515 * self.sizescale, None, 1.03 * self.dayscale, 1.881 * self.yearscale, True)
@@ -65,5 +68,7 @@ class SolarSystem(DirectObject):
 
         self.runtime.addLuminary(render, sky)
 
+
+# Erstellt das Solarsystem und startet dieses
 w = SolarSystem()
 run()

@@ -174,12 +174,12 @@ class EventHandler(DirectObject):
         if self.textureOn == True:
             for luminary in luminaries:
                 if luminaries[luminary].textureToggle==True:
-                    luminaries[luminary].disableTexture()
+                    luminaries[luminary].model.clearTexture()
             self.textureOn = False
         else:
             for luminary in luminaries:
                 if luminaries[luminary].textureToggle==True:
-                    luminaries[luminary].enableTexture()
+                    luminaries[luminary].model.setTexture(loader.loadTexture(luminaries[luminary].texturePath), 1)
             self.textureOn = True
 
     def restartSimulation(self):
