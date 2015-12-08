@@ -1,6 +1,6 @@
 __author__ = 'mkritzl'
 
-class Planet(object):
+class Luminary(object):
     def __init__(self, name, texturePath, modelPath, initPosition, scale, children, selfRotate, orbitRotate, textureToggle):
         self.orbitRotate = orbitRotate
         self.selfRotate = selfRotate

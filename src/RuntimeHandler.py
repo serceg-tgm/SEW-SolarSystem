@@ -1,34 +1,33 @@
 from panda3d.core import TextNode, Vec3, Vec4
-import time
 
 class RuntimeHandler(object):
     def __init__(self):
         self.rootList = {}
         self.orbitList = {}
         self.selfRotateList = {}
-        self.planetList = {}
+        self.luminaryList = {}
 
-    def addPlanet(self, render, planet):
-        self.planetList[planet.name] = planet
-        if planet.name not in self.rootList:
-            self.rootList[planet.name] = render.attachNewNode(planet.name)
+    def addLuminary(self, render, luminary):
+        self.luminaryList[luminary.name] = luminary
+        if luminary.name not in self.rootList:
+            self.rootList[luminary.name] = render.attachNewNode(luminary.name)
 
-        if (planet.children):
-            for child in planet.children:
-                self.rootList[child.name] = (self.rootList[planet.name].attachNewNode(child.name))
-                self.rootList[child.name].setPos(planet.initPosition, 0, 0)
-                self.addPlanet(render,child)
+        if (luminary.children):
+            for child in luminary.children:
+                self.rootList[child.name] = (self.rootList[luminary.name].attachNewNode(child.name))
+                self.rootList[child.name].setPos(luminary.initPosition, 0, 0)
+                self.addLuminary(render,child)
 
-        if (planet.selfRotate):
-            self.selfRotateList[planet.name] = planet.model.hprInterval((planet.selfRotate), Vec3(360, 0, 0))
+        if (luminary.selfRotate):
+            self.selfRotateList[luminary.name] = luminary.model.hprInterval((luminary.selfRotate), Vec3(360, 0, 0))
 
-        if (planet.orbitRotate):
-            planet.model.reparentTo(self.rootList[planet.name])
-            self.orbitList[planet.name] = self.rootList[planet.name].hprInterval((planet.orbitRotate), Vec3(360, 0, 0))
+        if (luminary.orbitRotate):
+            luminary.model.reparentTo(self.rootList[luminary.name])
+            self.orbitList[luminary.name] = self.rootList[luminary.name].hprInterval((luminary.orbitRotate), Vec3(360, 0, 0))
         else:
-            planet.model.reparentTo(render)
+            luminary.model.reparentTo(render)
 
-    def rotatePlanets(self):
+    def rotateLuminaries(self):
         for orbit in self.orbitList:
             self.orbitList[orbit].loop()
 
@@ -76,18 +75,15 @@ class RuntimeHandler(object):
     def restartSimulation(self):
         for orbit in self.orbitList:
             self.orbitList[orbit].setPlayRate(0)
-            # self.orbitList[orbit].setPlayRate(1)
-
 
         for selfRotate in self.selfRotateList:
             self.selfRotateList[selfRotate].setPlayRate(0)
-            # self.selfRotateList[selfRotate].setPlayRate(1)
 
     def slowerPlaying(self):
         self.editSpeedPlaying(-1)
 
-    def getAllPlanets(self):
-        return self.planetList
+    def getAllLuminaries(self):
+        return self.luminaryList
 
-    def getPlanet(self, name):
-        return self.planetList[name]
+    def getLuminary(self, name):
+        return self.luminaryList[name]
