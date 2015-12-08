@@ -49,7 +49,7 @@ class SolarSystem(DirectObject):
 
     def loadLuminaries(self):
 
-        """ Ladet definierte Himmelskoerper und stellt assoziationen zwischen diesen dar
+        """ Ladet definierte Himmelskoerper und stellt Assoziationen zwischen diesen dar
 
         """
 

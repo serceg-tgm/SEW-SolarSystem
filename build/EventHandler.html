@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>EventHandler module &mdash; SolarSystem 1.0 Dokumentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="SolarSystem 1.0 Dokumentation" href="index.html" />
+    <link rel="next" title="Camera module" href="Camera.html" />
+    <link rel="prev" title="Luminary module" href="Luminary.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-src.EventHandler">
+<span id="eventhandler-module"></span><h1>EventHandler module<a class="headerlink" href="#module-src.EventHandler" title="Link zu dieser Überschrift">¶</a></h1>
+<dl class="class">
+<dt id="src.EventHandler.EventHandler">
+<em class="property">class </em><code class="descclassname">src.EventHandler.</code><code class="descname">EventHandler</code><span class="sig-paren">(</span><em>runtime</em>, <em>camera</em>, <em>middle</em><span class="sig-paren">)</span><a class="headerlink" href="#src.EventHandler.EventHandler" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Basisklassen: <code class="xref py py-class docutils literal"><span class="pre">direct.showbase.DirectObject.DirectObject</span></code></p>
+<p>Diese Klasse ist fuer das Verwalten der Events zustaendig. Sobald eine bestimmte Taste gedrueckt beziehungsweise
+der Mauszeiger bewegt wurde, wird ein bestimmtes Event ausgefuehrt.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variablen:</th><td class="field-body"><ul class="first last simple">
+<li><strong>runtime</strong> (<a class="reference internal" href="RuntimeHandler.html#module-src.RuntimeHandler" title="src.RuntimeHandler"><em>RuntimeHandler</em></a>) &#8211; beinhaltet alle Himmelskoerper</li>
+<li><strong>camera</strong> (<a class="reference internal" href="Camera.html#src.Camera.Camera" title="src.Camera.Camera"><em>Camera</em></a>) &#8211; ermoeglicht den Umgang mit einer Kamera</li>
+<li><strong>middle</strong> (<a class="reference internal" href="Luminary.html#src.Luminary.Luminary" title="src.Luminary.Luminary"><em>Luminary</em></a>) &#8211; stellt die Sonne dar</li>
+<li><strong>pointlightOn</strong> (<em>boolean</em>) &#8211; Punktlichtquelle wird im Konstruktor auf &#8220;true&#8221; gesetzt</li>
+<li><strong>textureOn</strong> (<em>boolean</em>) &#8211; Textur wird im Konstruktor auf &#8220;true&#8221; gesetzt</li>
+<li><strong>lightOn</strong> (<em>boolean</em>) &#8211; dient zum Togglen des Lichts</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="src.EventHandler.EventHandler.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>runtime</em>, <em>camera</em>, <em>middle</em><span class="sig-paren">)</span><a class="headerlink" href="#src.EventHandler.EventHandler.__init__" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Hier werden alle Attribute, welche zum Verwalten der Events benoetigt werden, initialisiert. Als Parameter
+werden Objekte vom RuntimeHandler, Camera und Luminary uebergeben. Ebenfalls werden die Methoden &#8220;setEvents&#8221;
+und &#8220;setLegend&#8221; aufgerufen.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameter:</th><td class="field-body"><ul class="first last simple">
+<li><strong>runtime</strong> &#8211; beinhaltet alle Himmelskoerper</li>
+<li><strong>camera</strong> &#8211; ermoeglicht den Umgang mit einer Kamera</li>
+<li><strong>middle</strong> &#8211; stellt die Sonne dar</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.EventHandler.EventHandler.fasterSimulation">
+<code class="descname">fasterSimulation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.EventHandler.EventHandler.fasterSimulation" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Moechte man die Simulation verschnellern (mittels der Taste &#8220;+&#8221;), wird diese Funktion aufgerufen.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.EventHandler.EventHandler.genLabelText">
+<code class="descname">genLabelText</code><span class="sig-paren">(</span><em>text</em>, <em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#src.EventHandler.EventHandler.genLabelText" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Mittels dieser Methode wird eine Legendenbeschreibung beim Programm generiert. Dazu muss man als Parameter
+uebergeben, welcher Text dargestellt wird und an welcher Position sich dieser befinden soll.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameter:</th><td class="field-body"><ul class="first simple">
+<li><strong>text</strong> &#8211; Text, der dargestellt werden soll</li>
+<li><strong>i</strong> &#8211; Position, an dem sich der Text befinden soll</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Rückgabe:</th><td class="field-body"><p class="first last">stellt die Beschreibung am Programm dar</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.EventHandler.EventHandler.initializeLight">
+<code class="descname">initializeLight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.EventHandler.EventHandler.initializeLight" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>In dieser Methode werden 3 Lichtarten initialisiert. Es wird ein AmbientLight auf die Sonne gesetzt und ebenfalls
+ein AmbientLight und ein PointLight auf das gesamte System. Mittels &#8220;Vase4&#8221; wird hier eingestellt, wie stark
+das Licht das jeweilige Objekt beleuchten soll (je hoeher die Zahl, desto staerker wird beleuchtet).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.EventHandler.EventHandler.restartSimulation">
+<code class="descname">restartSimulation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.EventHandler.EventHandler.restartSimulation" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Moechte man die Simulation neustarten (mittels der Taste &#8220;R&#8221;), wird diese Funktion aufgerufen.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.EventHandler.EventHandler.setEvents">
+<code class="descname">setEvents</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.EventHandler.EventHandler.setEvents" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>In dieser Methode wird explizit beschrieben, welche Funktion aufgerufen werden soll nachdem eine bestimmte
+Taste gedrueckt wurde (z.B.: &#8220;sys.exit&#8221; soll nach Druecken von &#8220;escape&#8221; ausgefuehrt werden, um das Programm
+zu beenden).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.EventHandler.EventHandler.setLegend">
+<code class="descname">setLegend</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.EventHandler.EventHandler.setLegend" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Hier werden die jeweiligen Hilfestellungen zum Verwalten der Events beschrieben und an einer bestimmten Position
+gesetzt (in diesem Fall handelt es sich lediglich um eine fortlaufende Nummer). Fuer jede einzelne
+Textbeschreibung muss die Methode &#8220;genLabelText&#8221; aufgerufen werden.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.EventHandler.EventHandler.slowerSimulation">
+<code class="descname">slowerSimulation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.EventHandler.EventHandler.slowerSimulation" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Moechte man die Simulation verlangsamen (mittels der Taste &#8220;-&#8221;), wird diese Funktion aufgerufen.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.EventHandler.EventHandler.toggleLight">
+<code class="descname">toggleLight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.EventHandler.EventHandler.toggleLight" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Diese Methode dient zum Verwalten der Punktlichtquelle. Je nachdem, ob das Attribut &#8220;lightOn&#8221; true oder false
+ist, wird entweder das AmbientLight von der Sonne staerker oder schwaecher gesetzt. Ebenfalls wird entweder
+ein AmbientLight oder ein PointLight auf das gesamte System gesetzt.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.EventHandler.EventHandler.toggleSimulation">
+<code class="descname">toggleSimulation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.EventHandler.EventHandler.toggleSimulation" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Moechte man die Simulation stoppen bzw. weiter ausfuehren (mittels der Taste &#8220;space&#8221;), wird diese Funktion
+aufgerufen.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.EventHandler.EventHandler.toggleTexture">
+<code class="descname">toggleTexture</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.EventHandler.EventHandler.toggleTexture" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Diese Methode dient zum Verwalten der Textur. Je nachdem, ob das Attribut &#8220;textureOn&#8221; true oder false ist,
+wird die Textur entweder ein- oder ausgeschaltet. Davor werden alle Himmelskoerper geholt, damit die
+Aenderungen fuer jeden Himmelskoerper aktiv werden.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="Luminary.html" title="vorheriges Kapitel">Luminary module</a></li>
+      <li>Next: <a href="Camera.html" title="nächstes Kapitel">Camera module</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Diese Seite</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/EventHandler.txt"
+            rel="nofollow">Quellcode anzeigen</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Schnellsuche</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Los" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Geben Sie Suchbegriffe oder einen Modul-, Klassen- oder Funktionsnamen ein.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, serceg & mkritzl.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/EventHandler.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

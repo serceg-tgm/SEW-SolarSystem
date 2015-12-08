@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Luminary module &mdash; Bruch 1.0 Dokumentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="Bruch 1.0 Dokumentation" href="index.html" />
+    <link rel="next" title="EventHandler module" href="EventHandler.html" />
+    <link rel="prev" title="RuntimeHandler module" href="RuntimeHandler.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-src.Luminary">
+<span id="luminary-module"></span><h1>Luminary module<a class="headerlink" href="#module-src.Luminary" title="Link zu dieser Überschrift">¶</a></h1>
+<dl class="class">
+<dt id="src.Luminary.Luminary">
+<em class="property">class </em><code class="descclassname">src.Luminary.</code><code class="descname">Luminary</code><span class="sig-paren">(</span><em>name</em>, <em>texturePath</em>, <em>modelPath</em>, <em>initPosition</em>, <em>scale</em>, <em>children</em>, <em>selfRotate</em>, <em>orbitRotate</em>, <em>textureToggle</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Luminary.Luminary" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Basisklassen: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Diese Klasse stellt einen bestimmten Himmelskoerper dar. Dabei werden alle Eigenschaften, die zum Initialisieren
+eines Himmelskoerpers angegeben werden muessen, als Parameter uebergeben.</p>
+<dl class="method">
+<dt id="src.Luminary.Luminary.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>name</em>, <em>texturePath</em>, <em>modelPath</em>, <em>initPosition</em>, <em>scale</em>, <em>children</em>, <em>selfRotate</em>, <em>orbitRotate</em>, <em>textureToggle</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Luminary.Luminary.__init__" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Hier werden alle Attribute, welche zum Initialisieren eines Himmelskoerpers benoetigt werden, initialisiert.
+Als Parameter</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Luminary.Luminary.disableTexture">
+<code class="descname">disableTexture</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Luminary.Luminary.disableTexture" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Mittels dieser Methode wird die Textur ausgeschaltet. Die Funktion wird in der Methode &#8220;toggleTexture&#8221;
+aufgerufen, um die Textur bei jedem Himmelskoerper auszuschalten.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Luminary.Luminary.enableTexture">
+<code class="descname">enableTexture</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Luminary.Luminary.enableTexture" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Mittels dieser Methode wird die Textur eingeschaltet. Die Funktion wird in der Methode &#8220;toggleTexture&#8221;
+aufgerufen, um die Textur bei jedem Himmelskoerper einzuschalten.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="RuntimeHandler.html" title="vorheriges Kapitel">RuntimeHandler module</a></li>
+      <li>Next: <a href="EventHandler.html" title="nächstes Kapitel">EventHandler module</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Diese Seite</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Luminary.txt"
+            rel="nofollow">Quellcode anzeigen</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Schnellsuche</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Los" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Geben Sie Suchbegriffe oder einen Modul-, Klassen- oder Funktionsnamen ein.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, mkritzl.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/Luminary.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

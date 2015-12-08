@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Camera module &mdash; SolarSystem 1.0 Dokumentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="SolarSystem 1.0 Dokumentation" href="index.html" />
+    <link rel="prev" title="EventHandler module" href="EventHandler.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-src.Camera">
+<span id="camera-module"></span><h1>Camera module<a class="headerlink" href="#module-src.Camera" title="Link zu dieser Überschrift">¶</a></h1>
+<dl class="class">
+<dt id="src.Camera.Camera">
+<em class="property">class </em><code class="descclassname">src.Camera.</code><code class="descname">Camera</code><span class="sig-paren">(</span><em>render</em>, <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Camera.Camera" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Basisklassen: <a class="reference external" href="https://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>Ermoeglich die Bewegung im dreidimensionalen Raum</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variablen:</th><td class="field-body"><ul class="first last simple">
+<li><strong>size</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Groesse des Weltraums</li>
+<li><strong>focus</strong> (<em>Vec3</em>) &#8211; Definiert die Position der Kamera</li>
+<li><strong>heading</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Der aktuelle Drehwinkel</li>
+<li><strong>pitch</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Der aktuelle Neigungswinkel</li>
+<li><strong>mousex</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Die Position der Maus auf der x-Achse</li>
+<li><strong>mousey</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Die Position der Maus auf der y-Achse</li>
+<li><strong>lastTime</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Gibt die Zeit an, wann die Methode controlCamera zuletzt ausgefuehrt wurde</li>
+<li><strong>mousebtn</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><em>list</em></a>) &#8211; Liste in der die getaetigten Tastendruecke festgehalten werden</li>
+<li><strong>lastX</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Letzte Position auf der x-Achse</li>
+<li><strong>lastY</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Letzte Position auf der y-Achse</li>
+<li><strong>lastZ</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; Letzte Position auf der z-Achse</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="src.Camera.Camera.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>render</em>, <em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Camera.Camera.__init__" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Definiert die Mouseposition und den Startpunkt der Kamera</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameter:</th><td class="field-body"><ul class="first last simple">
+<li><strong>render</strong> &#8211; Gesamte Umgebung des Raumes</li>
+<li><strong>size</strong> &#8211; Groesse des Weltraums</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Camera.Camera.birdPerspective">
+<code class="descname">birdPerspective</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.Camera.Camera.birdPerspective" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Setzt die Kamera in die Vogelperspektive</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Camera.Camera.checkArea">
+<code class="descname">checkArea</code><span class="sig-paren">(</span><em>size</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Camera.Camera.checkArea" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Ueberprueft ob sich die Camera aus dem eingeschraengtem Raum bewegt. Der Radius wird als size uebergeben.
+Sollte sich die Camera hinausbewegen wird sie auf den letzten gueltigen Wert gesetzt</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameter:</th><td class="field-body"><strong>size</strong> &#8211; Groesse des zu ueberpruefenden Raumes</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Rückgabe:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Camera.Camera.controlCamera">
+<code class="descname">controlCamera</code><span class="sig-paren">(</span><em>task</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Camera.Camera.controlCamera" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Steuert die Camera aufgrund von getaetigten Tasten oder Mausbewegungen. Diese Methode wird aufgrund
+des Tasks sehr oft ausgefuehrt</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameter:</th><td class="field-body"><strong>task</strong> &#8211; Gibt an, welche Funktion diese Methode uebernehmen soll</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.Camera.Camera.setMouseBtn">
+<code class="descname">setMouseBtn</code><span class="sig-paren">(</span><em>btn</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#src.Camera.Camera.setMouseBtn" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Ermoeglicht das setzen von Tastendruecken</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameter:</th><td class="field-body"><ul class="first last simple">
+<li><strong>btn</strong> &#8211; welche Taste betroffen ist</li>
+<li><strong>value</strong> &#8211; welcher Wert (0 oder 1) die Taste haben soll</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="EventHandler.html" title="vorheriges Kapitel">EventHandler module</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Diese Seite</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/Camera.txt"
+            rel="nofollow">Quellcode anzeigen</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Schnellsuche</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Los" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Geben Sie Suchbegriffe oder einen Modul-, Klassen- oder Funktionsnamen ein.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, serceg & mkritzl.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/Camera.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

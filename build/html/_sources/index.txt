@@ -1,0 +1,28 @@
+.. SolarSystem documentation master file, created by
+   sphinx-quickstart on Tue Dec  8 16:05:18 2015.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to SolarSystem's documentation!
+=======================================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+   
+   SolarSystem
+   RuntimeHandler
+   Luminary
+   EventHandler
+   Camera
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+

@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SolarSystem module &mdash; SolarSystem 1.0 Dokumentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/translations.js"></script>
+    <link rel="top" title="SolarSystem 1.0 Dokumentation" href="index.html" />
+    <link rel="next" title="RuntimeHandler module" href="RuntimeHandler.html" />
+    <link rel="prev" title="Herzlich Willkommen zur Dokumentation vom Solarsystem!" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-src.SolarSystem">
+<span id="solarsystem-module"></span><h1>SolarSystem module<a class="headerlink" href="#module-src.SolarSystem" title="Link zu dieser Überschrift">¶</a></h1>
+<dl class="class">
+<dt id="src.SolarSystem.SolarSystem">
+<em class="property">class </em><code class="descclassname">src.SolarSystem.</code><code class="descname">SolarSystem</code><a class="headerlink" href="#src.SolarSystem.SolarSystem" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Basisklassen: <code class="xref py py-class docutils literal"><span class="pre">direct.showbase.DirectObject.DirectObject</span></code></p>
+<p>Simuliert einen Ablauf eines Sonnensystems welches mittels Tastendruecken gesteuert werden kann.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Variablen:</th><td class="field-body"><ul class="first last simple">
+<li><strong>yearscale</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; die Dauer einer Umdrehung um den Mittelpunkt</li>
+<li><strong>dayscale</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; die Dauer fuer eine Umdrehung um sich selbst</li>
+<li><strong>orbitscale</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; die Groesse der Umlaufbahn</li>
+<li><strong>sizescale</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; die Groesse des Himmelskoerpers</li>
+<li><strong>skySize</strong> (<a class="reference external" href="https://docs.python.org/library/functions.html#int" title="(in Python v2.7)"><em>int</em></a>) &#8211; die Groesse des Weltraums</li>
+<li><strong>camera</strong> (<a class="reference internal" href="Camera.html#src.Camera.Camera" title="src.Camera.Camera"><em>Camera</em></a>) &#8211; ermoeglicht den Umgang mit einer Kamera</li>
+<li><strong>runtime</strong> (<a class="reference internal" href="RuntimeHandler.html#module-src.RuntimeHandler" title="src.RuntimeHandler"><em>RuntimeHandler</em></a>) &#8211; beinhaltet alle Himmelskoerper</li>
+<li><strong>eventHandler</strong> (<a class="reference internal" href="EventHandler.html#module-src.EventHandler" title="src.EventHandler"><em>EventHandler</em></a>) &#8211; verarbeitet Usereingaben</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="src.SolarSystem.SolarSystem.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.SolarSystem.SolarSystem.__init__" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Initialisiert die Kamera, die Runtime und den Eventhandler. Ladet die Planeten und startet das Programm</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.SolarSystem.SolarSystem.loadLuminaries">
+<code class="descname">loadLuminaries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.SolarSystem.SolarSystem.loadLuminaries" title="Link zu dieser Definition">¶</a></dt>
+<dd><p>Ladet definierte Himmelskoerper und stellt Assoziationen zwischen diesen dar</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="vorheriges Kapitel">Herzlich Willkommen zur Dokumentation vom Solarsystem!</a></li>
+      <li>Next: <a href="RuntimeHandler.html" title="nächstes Kapitel">RuntimeHandler module</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>Diese Seite</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/SolarSystem.txt"
+            rel="nofollow">Quellcode anzeigen</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Schnellsuche</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Los" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Geben Sie Suchbegriffe oder einen Modul-, Klassen- oder Funktionsnamen ein.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2015, serceg & mkritzl.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/SolarSystem.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

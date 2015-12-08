@@ -1,0 +1,9 @@
+SolarSystem module
+-----------------
+.. automodule:: src.SolarSystem
+.. autoclass:: SolarSystem
+	:members:
+	:private-members:
+	:undoc-members:
+	:special-members: __init__
+	:show-inheritance:
