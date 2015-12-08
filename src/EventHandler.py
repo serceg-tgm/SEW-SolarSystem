@@ -14,12 +14,6 @@ class EventHandler(DirectObject):
         self.initializeLight()
         self.lightOn = True
 
-        taskMgr.add(self.camera.controlCamera, "camera-task")
-
-        props = WindowProperties()
-        props.setCursorHidden(True)
-        base.win.requestProperties(props)
-
         self.setEvents()
         self.setLegend()
 

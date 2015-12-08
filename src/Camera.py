@@ -24,6 +24,8 @@ class Camera(object):
         base.camera.setHpr(0, 0, 0)
         WindowProperties().setCursorHidden(True)
 
+        taskMgr.add(self.controlCamera, "camera-task")
+
     def controlCamera(self, task):
         # figure out how much the mouse has moved (in pixels)
 
